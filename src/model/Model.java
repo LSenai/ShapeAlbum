@@ -5,7 +5,6 @@ import model.shapes.Color;
 import model.shapes.IShape;
 import model.shapes.ShapeFactory;
 
-
 import java.awt.geom.Point2D;
 import java.util.LinkedHashMap;
 
