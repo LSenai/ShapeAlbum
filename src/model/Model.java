@@ -23,31 +23,28 @@ public class Model implements IModel {
    * state of the model.
    */
   public Model() {
-    shapes = new LinkedHashMap<>();
-    snapshots = new LinkedHashMap<>();
+    this.shapes = new LinkedHashMap<>();
+    this.snapshots = new LinkedHashMap<>();
   }
 
   @Override
   public void commandReceiver(String command) throws IllegalArgumentException {
     Util.validateString(command); // check for null or empty string
 
-    // All commands must have at least 2 words.
-    if (command.split(" ").length == 1) {
-      throw new IllegalArgumentException("Invalid command: " + command);
-    }
-
     String[] args = command.split(" ");
-    String name = args[1];
     String theCommand = args[0];
-
-    // execute snapshot command
     if (theCommand.equalsIgnoreCase("snapshot")) {
       Command takeSnapshot = new TakeSnapshotCommand(this.shapes, this.snapshots);
       takeSnapshot.execute(command);
+      return;
     }
-    else if (theCommand.equalsIgnoreCase("shape")) {
+
+    String name = args[1];
+
+    // execute snapshot command
+    if (theCommand.equalsIgnoreCase("shape")) {
       createShape(command);
-    } else { // execute shape modification command or snapshot command
+    } else { // execute shape modification command
       IShape shape = this.shapes.get(name);
       if (shape == null) {
         throw new IllegalArgumentException("There is no shape with name " + name);
@@ -64,9 +61,6 @@ public class Model implements IModel {
       } else if (theCommand.equalsIgnoreCase("remove")) {
         Command removeShape = new RemoveShapeCommand(this.shapes);
         removeShape.execute(command);
-      } else if (theCommand.equalsIgnoreCase("snapShot")) {
-        Command takeSnapshot = new TakeSnapshotCommand(this.shapes, this.snapshots);
-        takeSnapshot.execute(command);
       } else {
         throw new IllegalArgumentException("Error: valid commands must begin with: 'move', 'resize', 'color', "
                                             + "'remove', 'snapshot' and 'shape'");
@@ -124,7 +118,7 @@ public class Model implements IModel {
   @Override
   public String printShapes() {
     StringBuilder sb = new StringBuilder();
-    for (IShape shape : shapes.values()) {
+    for (IShape shape : this.shapes.values()) {
       sb.append(shape.toString() + "\n");
     }
     return sb.toString();
@@ -133,7 +127,7 @@ public class Model implements IModel {
   @Override
   public String printSnapshots() {
     StringBuilder sb = new StringBuilder();
-    for (Snapshot snapshot : snapshots.keySet()) {
+    for (Snapshot snapshot : this.snapshots.keySet()) {
       sb.append(snapshot.toString() + "\n");
     }
     return sb.toString();
