@@ -3,6 +3,8 @@ package controller;
 import model.IModel;
 import model.Snapshot;
 import model.shapes.IShape;
+import view.GraphicalView;
+import view.IView;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,57 +15,32 @@ import java.util.LinkedHashMap;
 public class AlbumController implements IAlbumController {
 
   private IModel model;
+  private String viewType;
 
   @Override
-  public void openAlbum(IModel model, String albumCommandsFile) throws IOException {
+  public void openAlbum(IModel model, String albumCommandsFile, String viewType) throws IOException {
 
+    this.viewType = viewType;
     this.model = model;
+
     ArrayList<String> commands = this.readUserCommands(albumCommandsFile);
-    for (String command : commands) {
+  /*  for (String command : commands) {
       System.out.println(command);
     }
     System.out.println(commands.size());
-
+*/
     LinkedHashMap<String, IShape> shapes = model.getShapes();
     LinkedHashMap<Snapshot, String> snapshots = model.getSnapshots();
 
-    // creating shapes
-    model.commandReceiver(commands.get(0));
-    model.printShapes();
-    model.commandReceiver(commands.get(1));
+    for (String command : commands) {
+      this.model.commandReceiver(command);
+    }
 
-
-    // System.out.println(model.getShapes().values());
-    // first snapshot
-    model.commandReceiver(commands.get(2));
-    //move myrect to 300 200
-    model.commandReceiver(commands.get(3));
-
-    // resize myrect to 25 100
-    model.commandReceiver(commands.get(4));
-
-    // move myrect to 100 300
-    model.commandReceiver(commands.get(5));
-
-    // second snapshot
-    model.commandReceiver(commands.get(6));
-
-    // change color of my rect to 0 0 255
-    model.commandReceiver(commands.get(7));
-
-    // move myoval to 500 400
-    model.commandReceiver(commands.get(8));
-
-    // third snapshot
-    model.commandReceiver(commands.get(9));
-
-    // remove myrect
-    model.commandReceiver(commands.get(10));
-
-    // fourth snapshot after removing myrect
-    model.commandReceiver(commands.get(11));
-
-    System.out.println(model.printSnapshots());
+    // System.out.println(model.printSnapshots());
+    if (this.viewType.equalsIgnoreCase("graphical")) {
+      GraphicalView view = new GraphicalView(model.getSnapshots());
+      //view.display();
+    }
 
   }
 

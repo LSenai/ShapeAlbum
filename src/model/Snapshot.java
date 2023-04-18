@@ -9,12 +9,12 @@ import java.util.LinkedHashMap;
  * A snapshot of the model (canvas) at a given time. A snapshot saves a copy of the shapes list when it is invoked.
  */
 public class Snapshot {
-  private static int nextID = 1; // increments with each new snapshot. Prevents duplicate IDs from hash collisions.
-  private int ID;
+  private static int nextID = 1; // increments with each new snapshot. Prevents duplicate IDs.
+  private String ID;
   private Timestamp timestamp;
   private String description;
   private LinkedHashMap<String, IShape> shapes;
-  private static final int ID_OFFSET = 10031;
+
 
   /**
    * Constructs a snapshot of the model at a given time.
@@ -26,7 +26,7 @@ public class Snapshot {
     this.shapes = shapes;
     this.timestamp = new Timestamp(System.currentTimeMillis());
     this.description = description;
-    this.ID = this.timestamp.hashCode() % ID_OFFSET;
+    this.ID = "Snapshot " + nextID;
     nextID++;
   }
 
@@ -81,7 +81,7 @@ public class Snapshot {
    * Returns the ID of the snapshot.
    * @return the ID of the snapshot.
    */
-  public int getID() {
+  public String getID() {
     return this.ID;
   }
 
