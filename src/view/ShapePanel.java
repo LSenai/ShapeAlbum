@@ -6,16 +6,17 @@ import model.shapes.IShape;
 import javax.swing.*;
 import java.awt.*;
 import java.util.LinkedHashMap;
-import java.util.Objects;
 
 public class ShapePanel extends JPanel {
-  private int WIDTH = 800;
-  private int HEIGHT = 800;
+  private int WIDTH;
+  private int HEIGHT;
   private Snapshot snapshot;
 
-  public ShapePanel(Snapshot snapshot) {
+  public ShapePanel(Snapshot snapshot, int WIDTH, int HEIGHT) {
+    this.WIDTH = WIDTH;
+    this.HEIGHT = HEIGHT;
     JPanel shapePanel = new JPanel();
-    shapePanel.setSize(WIDTH, HEIGHT);
+    shapePanel.setSize(this.WIDTH, this.HEIGHT);
     shapePanel.setBackground(Color.WHITE);
     this.snapshot = snapshot;
   }

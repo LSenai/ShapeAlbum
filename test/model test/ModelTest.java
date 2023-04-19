@@ -254,7 +254,7 @@ public class ModelTest {
       lastSnap = entry;
     }
     Snapshot s = lastSnap.getKey();
-    int ID = s.getID();
+    String ID = s.getID();
     Timestamp timestamp = s.getTimestamp();
     String description = s.getDescription(); // could also use lastSnap.getValue()
     String snap1ShapesString = "Name: rect1\n"
@@ -281,7 +281,7 @@ public class ModelTest {
       lastSnap = entry;
     }
     s = lastSnap.getKey();
-    int ID2 = s.getID();
+    String ID2 = s.getID();
     Timestamp timestamp2 = s.getTimestamp();
     String description2 = s.getDescription(); // could also use lastSnap.getValue()
     String snap2ShapesString = "Name: rect1\n"

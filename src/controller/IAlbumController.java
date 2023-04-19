@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public interface IAlbumController {
 
-  void openAlbum(IModel model, String albumCommandsFile, String viewType) throws IOException;
+  void openAlbum(IModel model, String[] args) throws IOException;
 
   /**
    * Read command line arguments, parse them, and return them as a string array.

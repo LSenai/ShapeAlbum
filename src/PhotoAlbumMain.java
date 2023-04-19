@@ -3,7 +3,6 @@ import model.Model;
 
 
 import java.io.IOException;
-import java.util.Arrays;
 
 
 public class PhotoAlbumMain {
@@ -12,12 +11,9 @@ public class PhotoAlbumMain {
     AlbumController controller = new AlbumController();
     Model model = new Model();
 
-    String[] commandArgs = controller.readCommandLine(args);
-    String inputFile = commandArgs[0];
-    String viewType = commandArgs[2];
-    System.out.println(Arrays.toString(commandArgs));
+    String[] commandArgs = controller.readCommandLine(args); // validates the args
 
-    controller.openAlbum(model, inputFile, viewType);
+    controller.openAlbum(model, commandArgs);
 
   }
 }

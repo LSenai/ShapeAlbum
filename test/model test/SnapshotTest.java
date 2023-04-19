@@ -54,7 +54,7 @@ public class SnapshotTest {
   @Test
   public void testToString() {
     snapshot = new Snapshot(shapes, "test");
-    int ID = snapshot.getID();
+    String ID = snapshot.getID();
     Timestamp timestamp = snapshot.getTimestamp();
     String description = snapshot.getDescription();
     String shapesString = "Name: rect\n" + "Type: Rectangle\nMin corner: (0.0, 0.0), Width: 10, Height: 10, " +
