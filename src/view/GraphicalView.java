@@ -12,7 +12,6 @@ import java.util.LinkedHashMap;
 
 public class GraphicalView extends JFrame implements IGraphicalView, ActionListener {
 
-  IAlbumController controller;
   private JLabel topLabel;
   private JLabel bottomLabel;
   JButton previousButton;

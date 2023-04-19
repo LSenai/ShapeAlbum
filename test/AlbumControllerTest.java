@@ -34,11 +34,11 @@ public class AlbumControllerTest {
   /**
    * Test openAlbum method with valid input. This test demonstrates that the controller properly links with the model
    * and should also initialize the web view, showing that it is executing the view's writeHTMLFile method.
-   * A file called TEST.html should be created in the project root, which I have manually deleted after each test run.
+   * A file called TESTOPEN.html should be created in the project root, which I have manually deleted after each test run.
    */
   @Test
   public void testOpenAlbumWeb() throws IOException {
-    String[] args = {"buildings.txt", "TEST.html", "web", "800", "800"};
+    String[] args = {"buildings.txt", "TESTOPEN.html", "web", "800", "800"};
     albumController.openAlbum(model, args);
     assertEquals(3, model.getSnapshots().size());
   }

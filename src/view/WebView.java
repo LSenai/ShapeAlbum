@@ -113,7 +113,7 @@ public class WebView implements IWebView {
    * Creates the HTML string that will display the snapshots. This method will create the HTML strings and then call the
    * createSnapshotSVG method to create the SVG for each snapshot.
    */
-  private String generateHTML() {
+  public String generateHTML() {
     StringBuilder htmlBuilder = new StringBuilder();
     // add the HTML header
     htmlBuilder.append("<!DOCTYPE html>\n");
