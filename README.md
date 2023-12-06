@@ -5,7 +5,7 @@ This was an assignment for my Object-Oriented Development course. The purpose wa
 My goal for this assignment was to employ some of the design patterns we learned about throughout the course. Broadly speaking, there are three types of design patterns:
 
 * Creational
-* Behaviora
+* Behavioral
 * Structural
 
 For this assignment, I made use of the Factory design pattern as a type of Creational pattern to create Shape objects. Most significantly, I centered my design around the Command design pattern, which is a Behavioral pattern. The biggest design feature of my Model is that I utilized the Command pattern to create a method - commandReceiver() - that will handle and delegate nearly all method calls for the Model. I chose this approach because I wanted all interactions with the controller to be handled through one class in my model (the Model class) while still making use of command objects. 
